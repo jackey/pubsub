@@ -1,0 +1,28 @@
+{
+  "name": "pubsub",
+  "version": "0.0.1",
+  "description": "pub-sub for node.js and redis",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/simple.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackey/pubsub.git"
+  },
+  "keywords": [
+    "pub/sub"
+  ],
+  "author": "jackey <jackey@fumer.cm>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jackey/pubsub/issues"
+  },
+  "homepage": "https://github.com/jackey/pubsub#readme",
+  "dependencies": {
+    "bluebird": "^3.4.0",
+    "body-parser": "^1.15.1",
+    "express": "^4.14.0",
+    "redis": "^2.6.2"
+  }
+}
