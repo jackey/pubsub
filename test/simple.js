@@ -5,14 +5,24 @@ var client = pubsub.Client({
 });
 
 var productChan = client.Channel('product');
-productChan.sub('add', function (err, product) {
-	
+productChan.sub('add', function (product) {
+	console.log(['sub', 'add', 'product', product]);
 });
 
-// http server 
+productChan.pub('add', {name: 'test product name'});
+
+// http server
 var app = client.http();
-app.use('channel:product', function (req, res) {
-	res.json({hello: 'world'});
+
+app.get('/channel/:channel_name/pub/:event', function (req, res) {
+	var channel_name = req.params.channel_name;
+	var event = req.params.event;
+	var data = req.body;
+
+	var channel = client.Channel(channel_name);
+	channel.pub(event, data);
+
+	res.json({channel_name: channel_name, event: event});
 });
 
 var port = 8080;
