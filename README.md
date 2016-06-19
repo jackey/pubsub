@@ -132,6 +132,41 @@ HTTP 响应订阅事件处理结果. 该结果会被保存到redis中, 等待用
 
 ### socket模式订阅发布事件
 
+### socket模式服务端
+
+#### client.socket(port, address)
+配置服务端监听端口 监听地址, 返回socket server 实例
+
+#### server.connect(cb)
+服务端配置客户端连接回调函数，当有新的客户端连接后 调用此回调函数
+
+
+#### server.channel(socket, channel_name)
+创建服务端隧道实例
+
+#### channel.sub(event, cb)
+订阅event 事件，事件达到后调用cb 处理函数
+
+#### channel.tell(event, data)
+返回事件event处理结果
+
+#### server.start(cb)
+服务端开始监听客户端, 完成后调用回调函数
+
+### socket模式客户端
+
+#### _SocketClient 类
+
+##### .connect(port, address)
+在端口port和ip地址address建立socket 链接
+
+##### .channel(channel_name, options)
+开启channel_name隧道 返回隧道实例
+
+#### _Channel类
+
+##### .pub(event, data, cb)
+发布event 事件到socket服务端 服务端处理完后自动回调 cb回调函数
 
 
 # TODO
@@ -140,9 +175,11 @@ HTTP 响应订阅事件处理结果. 该结果会被保存到redis中, 等待用
 
 * Socket 模式断开后自动重连
 
+* Socket 模式客户端支持 sub - 服务端支持pub / 目前客户端只支持pub - 服务端只支持sub
+
 * 增加日志处理
 
-* 更多细节状态检测 
+* 更多细节处理和状态检测 
 
 
 
