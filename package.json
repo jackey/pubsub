@@ -1,7 +1,7 @@
 {
-  "name": "pubsub",
+  "name": "net-pubsub",
   "version": "0.0.1",
-  "description": "pub-sub for node.js and redis",
+  "description": "pub-sub for node.js and redis with network supports",
   "main": "index.js",
   "scripts": {
     "simple": "babel-watch test/simple.js",
