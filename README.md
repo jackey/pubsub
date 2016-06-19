@@ -8,6 +8,7 @@ A pub-sub system for node.js and redis
 * 支持Socket 长链接 ; 支持Socket回调机制
 
 * Redis 存储
+
 	
 ＃ 快速上手
 
