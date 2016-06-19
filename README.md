@@ -10,7 +10,9 @@ A pub-sub system for node.js and redis
 * Redis 存储
 
 
-＃ 快速上手
+# 快速上手
+
+各种模式示例
 
 ## 同一进程内
 
