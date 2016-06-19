@@ -4,7 +4,10 @@
   "description": "pub-sub for node.js and redis",
   "main": "index.js",
   "scripts": {
-    "test": "babel-watch test/simple.js"
+    "simple": "babel-watch test/simple.js",
+    "rest": "babel-watch test/rest",
+    "socket": "babel-watch test/socket",
+    "socket_client": "babel-watch test/socket_client"
   },
   "repository": {
     "type": "git",
