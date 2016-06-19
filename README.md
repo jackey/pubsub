@@ -104,8 +104,11 @@ pubsub_client.connect(function (socket) {
 
 # 接口
 
+
 ### pubsub.Client(redis_uri)
-传递[https://www.iana.org/assignments/uri-schemes/prov/redis](redis_uri) 参数启动pubsub客户端实例
+传递[redis_uri](https://www.iana.org/assignments/uri-schemes/prov/redis) 参数启动pubsub客户端实例
+
+### 本地进程订阅发布事件
 
 #### client.Channel(channel_name)
 开启channel_name隧道 返回隧道实例
@@ -116,8 +119,30 @@ pubsub_client.connect(function (socket) {
 #### channel.pub(event, data, cb)
 发布data数据到 event事件中
 
- 
+### HTTP REST 订阅发布事件
 
+#### client.http() 
+http 返回 express 的app实例. 但增加如下方法
+
+#### app.channel('channel')
+创建 HTTP Channel。 返回channel实例和 Client.Channel() 一致
+
+#### app.response(channel_name, event, data)
+HTTP 响应订阅事件处理结果. 该结果会被保存到redis中, 等待用户主动查询处理结果.
+
+### socket模式订阅发布事件
+
+
+
+# TODO
+
+* HTTP REST 模式需要区分不同用户的事件发布和事件处理 避免不同用户互相覆盖处理结果
+
+* Socket 模式断开后自动重连
+
+* 增加日志处理
+
+* 更多细节状态检测 
 
 
 
