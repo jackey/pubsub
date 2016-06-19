@@ -104,7 +104,21 @@ pubsub_client.connect(function (socket) {
 
 # 接口
 
-TODO::
+### pubsub.Client(redis_uri)
+传递[https://www.iana.org/assignments/uri-schemes/prov/redis](redis_uri) 参数启动pubsub客户端实例
+
+#### client.Channel(channel_name)
+开启channel_name隧道 返回隧道实例
+
+#### channel.sub(event, cb)
+订阅event事件. cb 为事件处理函数
+
+#### channel.pub(event, data, cb)
+发布data数据到 event事件中
+
+ 
+
+
 
 
 
