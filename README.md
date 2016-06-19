@@ -13,7 +13,7 @@ A pub-sub system for node.js and redis
 
 ## 同一进程内
 
-```
+```js
 var pubsub = require('pubsub');
 
 var client = pubsub.Client({
