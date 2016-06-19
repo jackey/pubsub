@@ -3,11 +3,11 @@ A pub-sub system for node.js and redis
 
 # 特性
 
-    * HTTP REST 支持
+* HTTP REST 支持
 
-    * 支持Socket 长链接 ; 支持Socket回调机制
+* 支持Socket 长链接 ; 支持Socket回调机制
 
-    * Redis 存储
+* Redis 存储
 	
 ＃ 快速上手
 
