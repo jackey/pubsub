@@ -140,15 +140,21 @@ HTTP 响应订阅事件处理结果. 该结果会被保存到redis中, 等待用
 #### server.connect(cb)
 服务端配置客户端连接回调函数，当有新的客户端连接后 调用此回调函数
 
+### server.socketSub(socket, channelName, event)
+服务端在socket监听器商订阅channelName 隧道的Event 事件，事件触发后写输入到socket 通知客户端
+
+### server.socketPub(socket, channelName, event, data)
+服务端在客户端socket的channelName隧道触发Event事件
 
 #### server.channel(socket, channel_name)
 创建服务端隧道实例
 
+#### server.tell(event, data)
+返回事件event处理结果
+
 #### channel.sub(event, cb)
 订阅event 事件，事件达到后调用cb 处理函数
 
-#### channel.tell(event, data)
-返回事件event处理结果
 
 #### server.start(cb)
 服务端开始监听客户端, 完成后调用回调函数
@@ -166,16 +172,16 @@ HTTP 响应订阅事件处理结果. 该结果会被保存到redis中, 等待用
 #### _Channel类
 
 ##### .pub(event, data, cb)
-发布event 事件到socket服务端 服务端处理完后自动回调 cb回调函数
+在socket服务端发布event事件
 
+##### .sub(event, cb)
+从socket服务端订阅event事件
 
 # TODO
 
 * HTTP REST 模式需要区分不同用户的事件发布和事件处理 避免不同用户互相覆盖处理结果
 
 * Socket 模式断开后自动重连
-
-* Socket 模式客户端支持 sub - 服务端支持pub / 目前客户端只支持pub - 服务端只支持sub
 
 * 增加日志处理
 

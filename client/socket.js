@@ -28,9 +28,10 @@ _SocketClient.prototype.ondata = function (data) {
     data = JSON.parse(data);
     var channel_name = data['channel'];
     var event = data['event'];
+    var action = data['action'];
     var data = data['data'];
     var channel = this.channel(channel_name);
-    channel.emit('channel:'+channel_name+':event:'+event, data);
+    channel.emit('channel:'+channel_name+':event:'+event + ':'+action, data);
 }
 
 _SocketClient.prototype.channel = function (channel_name, options) {
@@ -45,14 +46,30 @@ function _Channel(socket, channel_name, options) {
 
 util.inherits(_Channel, EventEmitter);
 
+_Channel.prototype.json = function (data) {
+    this.socket.write(JSON.stringify(data));
+}
+
 _Channel.prototype.pub = function (event, data, cb) {
     var data = {
         channel: this.name,
         event: event,
+        action: 'pub',
         data: data
     }
-    this.once('channel:'+this.name+':event:'+event, cb);
-    this.socket.write(JSON.stringify(data));
+    this.once('channel:'+this.name+':event:'+event+':pub', cb);
+    this.json(data);
+}
+
+_Channel.prototype.sub = function (event, cb) {
+    var data = {
+        channel: this.name,
+        event: event,
+        data: {},
+        action: 'sub',
+    }
+    this.on('channel:'+this.name+':event:'+event+':sub', cb);
+    this.json(data);
 }
 
 
