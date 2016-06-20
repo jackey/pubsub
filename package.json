@@ -1,6 +1,6 @@
 {
   "name": "net-pubsub",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "pub-sub for node.js and redis with network supports",
   "main": "index.js",
   "scripts": {
