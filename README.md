@@ -1,6 +1,12 @@
 # pubsub
 A pub-sub system for node.js and redis
 
+# 获取和安装
+
+```js
+npm install net-pubsub
+```
+
 # 特性
 
 * HTTP REST 支持
